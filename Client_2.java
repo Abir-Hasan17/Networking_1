@@ -3,18 +3,18 @@ import java.io.*;
 import java.net.*;
 import java.text.*;
 
-public class Client_1 {
+public class Client_2 {
     public static void main(String[] args) throws IOException {
         Scanner inp = new Scanner(System.in);
-        String clnt = "client_1";
+        String clnt = "client_2";
 
-        Socket s = new Socket("localhost",700);
+        Socket s = new Socket("localhost",701);
         System.out.println("\nConnected to server!!!!\n");
 
         DataInputStream dis = new DataInputStream(s.getInputStream());
         DataOutputStream dos = new DataOutputStream(s.getOutputStream());
         dos.writeUTF(clnt);
-        
+
         Thread in = new Thread(new clnt_in(dos,dis));
         Thread out = new Thread(new clnt_out(dos,dis));
         
@@ -23,3 +23,4 @@ public class Client_1 {
 
     }
 }
+

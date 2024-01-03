@@ -7,29 +7,56 @@ import java.text.*;
 public class Server_1 {
     public static void main(String[] args) throws IOException{
 
+        int start_port = 700;
+        int port = start_port;
+        int max_port = 3;
+
+        while(port-start_port<max_port){
+            Thread conn = new Thread(new serv_conn(port));
+            conn.start();
+            port++;
+        }
         System.out.println("\nWaiting for client....");
-        ServerSocket ss = new ServerSocket(777);
-        Socket s = ss.accept();
-        System.out.println("Connected to client!!!!\n");
-
-        DataInputStream dis = new DataInputStream(s.getInputStream());
-        DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-
-        Thread in = new Thread(new serv_in(dos,dis));
-        Thread out = new Thread(new serv_out(dos,dis));
-
-        in.start();
-        out.start();
 
     }
+}
+
+class serv_conn implements Runnable{
+    int port;
+    serv_conn(int p){
+        port = p;
+    }
+    @Override
+    public void run(){
+        try{
+            ServerSocket ss = new ServerSocket(port);
+            System.out.println("Port: "+port+" ready to connect...");
+            Socket s = ss.accept();
+            String clnt;
+
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            clnt = dis.readUTF();
+            System.out.println(clnt+" Connected to port: "+port+"!!!!\n");
+
+            Thread in = new Thread(new serv_in(dos,dis,clnt));
+            Thread out = new Thread(new serv_out(dos,dis));
+
+            in.start();
+            out.start();
+        }catch(IOException e){System.out.println(e);}
+    }
+    
 }
 
 class serv_in implements Runnable{
     DataOutputStream dos;
     DataInputStream dis;
-    serv_in(DataOutputStream o, DataInputStream i){
+    String clnt;
+    serv_in(DataOutputStream o, DataInputStream i, String c){
         dos = o;
         dis = i;
+        clnt = c;
     }
     @Override
     public void run() {
@@ -37,7 +64,7 @@ class serv_in implements Runnable{
             try {
                 String s = dis.readUTF();
                 if(s.equals("exit")) System.exit(0);
-                System.out.println("#Client: "+s);
+                System.out.println("#"+clnt+": "+s);
             } catch (IOException e) {e.printStackTrace();}
         }
     }
