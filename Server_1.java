@@ -10,21 +10,27 @@ public class Server_1 {
         int start_port = 700;
         int port = start_port;
         int max_port = 3;
+        ArrayList<DataOutputStream> dos = new ArrayList<DataOutputStream>();
 
+        System.out.println("\nWaiting for client....\n");
         while(port-start_port<max_port){
-            Thread conn = new Thread(new serv_conn(port));
+            Thread conn = new Thread(new serv_conn(port, dos));
             conn.start();
             port++;
         }
-        System.out.println("\nWaiting for client....");
+
+        Thread out = new Thread(new serv_out(dos));
+        out.start();
 
     }
 }
 
 class serv_conn implements Runnable{
     int port;
-    serv_conn(int p){
+    ArrayList<DataOutputStream> dos;
+    serv_conn(int p, ArrayList<DataOutputStream> o){
         port = p;
+        dos = o;
     }
     @Override
     public void run(){
@@ -35,26 +41,21 @@ class serv_conn implements Runnable{
             String clnt;
 
             DataInputStream dis = new DataInputStream(s.getInputStream());
-            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            dos.add(new DataOutputStream(s.getOutputStream()));
             clnt = dis.readUTF();
-            System.out.println(clnt+" Connected to port: "+port+"!!!!\n");
+            System.out.println("\n"+clnt+" Connected to port: "+port+"!!!!");
 
-            Thread in = new Thread(new serv_in(dos,dis,clnt));
-            Thread out = new Thread(new serv_out(dos,dis));
-
+            Thread in = new Thread(new serv_in(dis,clnt));
             in.start();
-            out.start();
         }catch(IOException e){System.out.println(e);}
     }
     
 }
 
 class serv_in implements Runnable{
-    DataOutputStream dos;
     DataInputStream dis;
     String clnt;
-    serv_in(DataOutputStream o, DataInputStream i, String c){
-        dos = o;
+    serv_in(DataInputStream i, String c){
         dis = i;
         clnt = c;
     }
@@ -72,18 +73,18 @@ class serv_in implements Runnable{
 
 class serv_out implements Runnable{
     Scanner inp = new Scanner(System.in);
-    DataOutputStream dos;
-    DataInputStream dis;
-    serv_out(DataOutputStream o, DataInputStream i){
+    ArrayList<DataOutputStream> dos;
+    serv_out(ArrayList<DataOutputStream> o){
         dos = o;
-        dis = i;
     }
     @Override
     public void run() {
         while(true){
             try {
                 String s = inp.nextLine();
-                dos.writeUTF(s);
+                for(int i = 0; i<dos.size(); i++){
+                    dos.get(i).writeUTF(s);
+                }
                 if(s.equals("exit")) System.exit(0);
             } catch (IOException e) {e.printStackTrace();}
         }
