@@ -1,25 +1,24 @@
 import java.util.*;
 import java.io.*;
 import java.net.*;
-import java.text.*;
 
 
 public class Server_1 {
+    static ArrayList<Client> clients = new ArrayList<Client>();
     public static void main(String[] args) throws IOException{
 
         int start_port = 700;
         int port = start_port;
-        int max_port = 3;
-        ArrayList<DataOutputStream> dos = new ArrayList<DataOutputStream>();
+        int max_port = 4;
 
-        System.out.println("\nWaiting for client....\n");
         while(port-start_port<max_port){
-            Thread conn = new Thread(new serv_conn(port, dos));
+            Thread conn = new Thread(new serv_conn(port, clients));
             conn.start();
             port++;
         }
+        System.out.println("\nWaiting for client....\n");
 
-        Thread out = new Thread(new serv_out(dos));
+        Thread out = new Thread(new serv_out(clients));
         out.start();
 
     }
@@ -27,10 +26,10 @@ public class Server_1 {
 
 class serv_conn implements Runnable{
     int port;
-    ArrayList<DataOutputStream> dos;
-    serv_conn(int p, ArrayList<DataOutputStream> o){
+    ArrayList<Client> clients;
+    serv_conn(int p, ArrayList<Client> c){
         port = p;
-        dos = o;
+        clients = c;
     }
     @Override
     public void run(){
@@ -38,14 +37,15 @@ class serv_conn implements Runnable{
             ServerSocket ss = new ServerSocket(port);
             System.out.println("Port: "+port+" ready to connect...");
             Socket s = ss.accept();
-            String clnt;
 
             DataInputStream dis = new DataInputStream(s.getInputStream());
-            dos.add(new DataOutputStream(s.getOutputStream()));
-            clnt = dis.readUTF();
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            String clnt = dis.readUTF();
+            Client client = new Client (clnt,dis,dos);
+            clients.add(client);
             System.out.println("\n"+clnt+" Connected to port: "+port+"!!!!");
 
-            Thread in = new Thread(new serv_in(dis,clnt));
+            Thread in = new Thread(new serv_in(client,clients));
             in.start();
         }catch(IOException e){System.out.println(e);}
     }
@@ -53,40 +53,61 @@ class serv_conn implements Runnable{
 }
 
 class serv_in implements Runnable{
-    DataInputStream dis;
-    String clnt;
-    serv_in(DataInputStream i, String c){
-        dis = i;
-        clnt = c;
+    Client client;
+    ArrayList<Client> clients;
+    serv_in(Client client, ArrayList<Client> clients){
+        this.client = client;
+        this.clients = clients;
     }
     @Override
     public void run() {
         while(true){
             try {
-                String s = dis.readUTF();
-                if(s.equals("exit")) System.exit(0);
-                System.out.println("#"+clnt+": "+s);
-            } catch (IOException e) {e.printStackTrace();}
+                String s = client.dis.readUTF();
+                if(s.equals("exit")){ 
+                    System.out.println(client.name+" disconnected!!!");
+                    clients.remove(client);
+                    break;
+                }
+                System.out.println("#"+client.name+": "+s);
+            } catch (IOException e) {
+                System.out.println("error in serve_in");
+                break;
+            }
         }
     }
 }
 
 class serv_out implements Runnable{
     Scanner inp = new Scanner(System.in);
-    ArrayList<DataOutputStream> dos;
-    serv_out(ArrayList<DataOutputStream> o){
-        dos = o;
+    ArrayList<Client> clients;
+    serv_out(ArrayList<Client> clients){
+        this.clients = clients;
     }
     @Override
     public void run() {
         while(true){
             try {
                 String s = inp.nextLine();
-                for(int i = 0; i<dos.size(); i++){
-                    dos.get(i).writeUTF(s);
+                String[] arr = s.split(" ",2);
+                String clnt = arr[0];
+                if(clnt.contains(">>")){
+                    for(int i = 0; i<clients.size(); i++){
+                        if(clnt.equals(clients.get(i).name+">>")){
+                            clients.get(i).dos.writeUTF(arr[1]);
+                            if(arr[1].equals("exit")){
+                                clients.remove(i);
+                            }
+                        }
+                    }
+                }else{
+                    //System.out.println(dos.size());
+                    for(int i = 0; i<clients.size(); i++){
+                        clients.get(i).dos.writeUTF(s);
+                    }
+                    if(s.equals("exit")) System.exit(0);
                 }
-                if(s.equals("exit")) System.exit(0);
-            } catch (IOException e) {e.printStackTrace();}
+            } catch (IOException e) {System.out.println("fuck you");}
         }
     }
 
