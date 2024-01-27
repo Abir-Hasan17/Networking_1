@@ -41,13 +41,13 @@ class serv_conn implements Runnable{
             DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
             String clnt = dis.readUTF();
-            Client client = new Client (clnt,dis,dos);
+            Client client = new Client (clnt,dis,dos,port);
             clients.add(client);
             System.out.println("\n"+clnt+" Connected to port: "+port+"!!!!");
 
             Thread in = new Thread(new serv_in(client,clients));
             in.start();
-        }catch(IOException e){System.out.println(e);}
+        }catch(IOException e){System.out.println("error in serve_conn");}
     }
     
 }
@@ -70,6 +70,18 @@ class serv_in implements Runnable{
                     break;
                 }
                 System.out.println("#"+client.name+": "+s);
+
+                String[] arr = s.split(" ",2);
+                String clnt = arr[0];
+                if(clnt.contains(">>")){
+                    for(int i = 0; i<clients.size(); i++){
+                        if(clnt.equals(clients.get(i).name+">>")){
+                            clients.get(i).dos.writeUTF(clients.get(i).name);
+                            clients.get(i).dos.writeUTF(arr[1]);
+                        }
+                    }
+                }
+
             } catch (IOException e) {
                 System.out.println("error in serve_in");
                 break;
@@ -94,6 +106,7 @@ class serv_out implements Runnable{
                 if(clnt.contains(">>")){
                     for(int i = 0; i<clients.size(); i++){
                         if(clnt.equals(clients.get(i).name+">>")){
+                            clients.get(i).dos.writeUTF("Server");
                             clients.get(i).dos.writeUTF(arr[1]);
                             if(arr[1].equals("exit")){
                                 clients.remove(i);
@@ -103,11 +116,12 @@ class serv_out implements Runnable{
                 }else{
                     //System.out.println(dos.size());
                     for(int i = 0; i<clients.size(); i++){
+                        clients.get(i).dos.writeUTF("Server");
                         clients.get(i).dos.writeUTF(s);
                     }
                     if(s.equals("exit")) System.exit(0);
                 }
-            } catch (IOException e) {System.out.println("fuck you");}
+            } catch (IOException e) {System.out.println("error in serve_out");}
         }
     }
 

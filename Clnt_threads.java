@@ -6,18 +6,21 @@ import java.text.*;
 class clnt_in implements Runnable{
     DataOutputStream dos;
     DataInputStream dis;
-    clnt_in(DataOutputStream o, DataInputStream i){
-        dos = o;
-        dis = i;
+    clnt_in(DataOutputStream dos, DataInputStream dis){
+        this.dos = dos;
+        this.dis = dis;
     }
     @Override
     public void run() {
         while(true){
             try {
-                String s = dis.readUTF();
-                if(s.equals("exit")) System.exit(0);
-                System.out.println("#Server: "+s);
-            } catch (IOException e) {e.printStackTrace();}
+                String sender = dis.readUTF();
+                String msg = dis.readUTF();
+                if(msg.equals("exit")) System.exit(0);
+                System.out.println("#"+sender+": "+msg);
+            } catch (IOException e) {
+                System.out.println("error in clnt_in");
+            }
         }
     }
 
@@ -27,18 +30,20 @@ class clnt_out implements Runnable{
     Scanner inp = new Scanner(System.in);
     DataOutputStream dos;
     DataInputStream dis;
-    clnt_out(DataOutputStream o, DataInputStream i){
-        dos = o;
-        dis = i;
+    clnt_out(DataOutputStream dos, DataInputStream dis){
+        this.dos = dos;
+        this.dis = dis;
     }
     @Override
     public void run() {
         while(true){
             try {
-                String s = inp.nextLine();
-                dos.writeUTF(s);
-                if(s.equals("exit")) System.exit(0);
-            } catch (IOException e) {e.printStackTrace();}
+                String msg = inp.nextLine();
+                dos.writeUTF(msg);
+                if(msg.equals("exit")) System.exit(0);
+            } catch (IOException e) {
+                System.out.println("error in clnt_out");
+            }
         }
     }
 

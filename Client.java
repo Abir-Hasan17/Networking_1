@@ -6,10 +6,12 @@ class Client{
     String name;
     DataInputStream dis;
     DataOutputStream dos;
+    int port;
 
-    Client(String name, DataInputStream dis, DataOutputStream dos){
+    Client(String name, DataInputStream dis, DataOutputStream dos, int port){
         this.name = name;
         this.dis = dis;
         this.dos = dos;
+        this.port = port;
     }
 }
