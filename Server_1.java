@@ -27,9 +27,9 @@ public class Server_1 {
 class serv_conn implements Runnable{
     int port;
     ArrayList<Client> clients;
-    serv_conn(int p, ArrayList<Client> c){
-        port = p;
-        clients = c;
+    serv_conn(int port, ArrayList<Client> clients){
+        this.port = port;
+        this.clients = clients;
     }
     @Override
     public void run(){
@@ -41,7 +41,7 @@ class serv_conn implements Runnable{
             DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
             String clnt = dis.readUTF();
-            Client client = new Client (clnt,dis,dos,port);
+            Client client = new Client (clnt,dis,dos,port,ss,s);
             clients.add(client);
             System.out.println("\n"+clnt+" Connected to port: "+port+"!!!!");
 
@@ -66,6 +66,8 @@ class serv_in implements Runnable{
                 String s = client.dis.readUTF();
                 if(s.equals("exit")){ 
                     System.out.println(client.name+" disconnected!!!");
+                    client.disconnect();
+                    new Thread(new serv_conn(client.port, clients)).start();
                     clients.remove(client);
                     break;
                 }
@@ -82,7 +84,9 @@ class serv_in implements Runnable{
                     }
                 }
 
-            } catch (IOException e) {
+            }
+            catch (SocketException e) {break;}
+            catch (IOException e) {
                 System.out.println("error in serve_in");
                 break;
             }
@@ -109,6 +113,11 @@ class serv_out implements Runnable{
                             clients.get(i).dos.writeUTF("Server");
                             clients.get(i).dos.writeUTF(arr[1]);
                             if(arr[1].equals("exit")){
+                                clients.get(i).disconnect();
+                                new Thread(new serv_conn(clients.get(i).port, clients)).start();
+                                clients.remove(i);
+                            }
+                            if(arr[1].equals("block")){
                                 clients.remove(i);
                             }
                         }
