@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clnt_threads.java" beforeDir="false" afterPath="$PROJECT_DIR$/Clnt_threads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +27,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Application.Client_2">
+  <component name="RunManager" selected="Application.Client_1">
     <configuration name="Client_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client_1" />
       <module name="Networking_1" />
@@ -72,9 +70,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client_2" />
         <item itemvalue="Application.Client_1" />
         <item itemvalue="Application.Server_1" />
-        <item itemvalue="Application.Client_2" />
         <item itemvalue="Gradle.C:/Users/HOME/Desktop/Networking_1" />
       </list>
     </recent_temporary>
@@ -100,8 +98,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Networking_1$Client_1.ic" NAME="Client_1 Coverage Results" MODIFIED="1706851019843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Networking_1$Client_2.ic" NAME="Client_2 Coverage Results" MODIFIED="1706297724684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

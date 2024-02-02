@@ -12,12 +12,20 @@ class clnt_in implements Runnable{
     }
     @Override
     public void run() {
+        boolean pg = false;
         while(true){
             try {
                 String sender = dis.readUTF();
                 String msg = dis.readUTF();
                 if(msg.equals("exit")) System.exit(0);
-                System.out.println("#"+sender+": "+msg);
+                if(pg){
+                    System.out.println(msg);
+                }else{
+                    System.out.println("#"+sender+": "+msg);
+                }
+                if(msg.equals("<paragraph>")){
+                    pg = !pg;
+                }
             } catch (IOException e) {
                 System.out.println("error in clnt_in");
             }
