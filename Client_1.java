@@ -8,7 +8,7 @@ public class Client_1 {
         Scanner inp = new Scanner(System.in);
         String clnt = "client_1";
 
-        Socket s = new Socket("192.168.0.105",700);
+        Socket s = new Socket("192.168.0.110",700);
         System.out.println("\nConnected to server!!!!\n");
 
         DataInputStream dis = new DataInputStream(s.getInputStream());

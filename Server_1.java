@@ -61,6 +61,7 @@ class serv_in implements Runnable{
     }
     @Override
     public void run() {
+        boolean pg = false;
         while(true){
             try {
                 String s = client.dis.readUTF();
@@ -71,19 +72,21 @@ class serv_in implements Runnable{
                     clients.remove(client);
                     break;
                 }
-                System.out.println("#"+client.name+": "+s);
-
+                if(pg) System.out.println(s);
+                else System.out.println("#"+client.name+": "+s);
                 String[] arr = s.split(" ",2);
                 String clnt = arr[0];
                 if(clnt.contains(">>")){
                     for(int i = 0; i<clients.size(); i++){
+                        if(arr[1].equals("//p")) break; //fix later...
                         if(clnt.equals(clients.get(i).name+">>")){
-                            clients.get(i).dos.writeUTF(clients.get(i).name);
-                            clients.get(i).dos.writeUTF(arr[1]);
+                            clients.get(i).dos.writeUTF(client.name);
+                            if(arr[1].equals("exit")) clients.get(i).dos.writeUTF(" Wants you to disconnect!!!");
+                            else clients.get(i).dos.writeUTF(arr[1]);
                         }
                     }
                 }
-
+                if(s.equals("//p")) pg = !pg;
             }
             catch (SocketException e) {break;}
             catch (IOException e) {
