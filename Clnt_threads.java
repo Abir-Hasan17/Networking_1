@@ -23,7 +23,7 @@ class clnt_in implements Runnable{
                 }else{
                     System.out.println("#"+sender+": "+msg);
                 }
-                if(msg.equals("<paragraph>")){
+                if(msg.equals("//p")){
                     pg = !pg;
                 }
             } catch (IOException e) {
@@ -31,7 +31,6 @@ class clnt_in implements Runnable{
             }
         }
     }
-
 }
 
 class clnt_out implements Runnable{
@@ -54,5 +53,4 @@ class clnt_out implements Runnable{
             }
         }
     }
-
 }

@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client_2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Clnt_threads.java" beforeDir="false" afterPath="$PROJECT_DIR$/Clnt_threads.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clnt_in.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clnt_out.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
