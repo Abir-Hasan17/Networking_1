@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/DReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/DSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clnt_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Clnt_essentials.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +39,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
-  <component name="RunManager" selected="Application.DReceiver">
+  <component name="RunManager" selected="Application.Server_1">
     <configuration name="Client_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client_1" />
       <module name="Networking_1" />
@@ -50,15 +47,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client_2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Client_2" />
+    <configuration name="DReceiver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DReceiver" />
       <module name="Networking_1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DReceiver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DReceiver" />
+    <configuration name="DSender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DSender" />
       <module name="Networking_1" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -79,19 +76,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Client_1" />
-      <item itemvalue="Application.Client_2" />
-      <item itemvalue="Application.Server_1" />
       <item itemvalue="Application.cp" />
       <item itemvalue="Application.DReceiver" />
+      <item itemvalue="Application.DSender" />
+      <item itemvalue="Application.Server_1" />
+      <item itemvalue="Application.Client_1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Server_1" />
+        <item itemvalue="Application.Client_1" />
+        <item itemvalue="Application.DSender" />
         <item itemvalue="Application.DReceiver" />
         <item itemvalue="Application.cp" />
-        <item itemvalue="Application.Client_2" />
-        <item itemvalue="Application.Client_1" />
-        <item itemvalue="Application.Server_1" />
       </list>
     </recent_temporary>
   </component>

@@ -27,7 +27,7 @@ class clnt_in implements Runnable{
                     pg = !pg;
                 }
             } catch (IOException e) {
-                System.out.println("error in clnt_in");
+                System.out.println("error in clnt_in" +e.getMessage());
             }
         }
     }
@@ -76,11 +76,10 @@ class clnt_ping implements Runnable{
             String[] arr = s.split("@",2);
             port = Integer.parseInt(arr[1]);
             ip = arr[0];
-            receive = new byte[65535];
-
+            ds.close();
             Thread init = new Thread(new clnt_init(port,ip));
             init.start();
-        }catch(Exception e){System.out.println("error in clnt_ping");}
+        }catch(Exception e){System.out.println("error in clnt_ping "+e.getMessage());}
     }
     static StringBuilder data(byte[] a) {
         if (a == null)
