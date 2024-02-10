@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/DReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/DSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client_2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Server_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Server_1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_out.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +42,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
-  <component name="RunManager" selected="Application.Server_1">
+  <component name="RunManager" selected="Application.DReceiver">
     <configuration name="Client_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client_1" />
       <module name="Networking_1" />
@@ -74,15 +64,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DSender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DSender" />
+    <configuration name="Server_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server_1" />
       <module name="Networking_1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Server_1" />
+    <configuration name="cp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cp" />
       <module name="Networking_1" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -92,16 +82,16 @@
       <item itemvalue="Application.Client_1" />
       <item itemvalue="Application.Client_2" />
       <item itemvalue="Application.Server_1" />
-      <item itemvalue="Application.DSender" />
+      <item itemvalue="Application.cp" />
       <item itemvalue="Application.DReceiver" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server_1" />
-        <item itemvalue="Application.DSender" />
         <item itemvalue="Application.DReceiver" />
+        <item itemvalue="Application.cp" />
         <item itemvalue="Application.Client_2" />
         <item itemvalue="Application.Client_1" />
+        <item itemvalue="Application.Server_1" />
       </list>
     </recent_temporary>
   </component>
@@ -127,6 +117,17 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cp.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Networking_1$Client_1.ic" NAME="Client_1 Coverage Results" MODIFIED="1706851019843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -10,33 +10,19 @@ public class DReceiver {
         byte[] receive = new byte[65535];
 
         DatagramPacket DpReceive = null;
-        while (true)
-        {
+        DpReceive = new DatagramPacket(receive, receive.length);
+        ds.receive(DpReceive);
+        InetAddress ip = ds.getInetAddress();
+        String s = data(receive).toString();
+        String[] arr = s.split("@",2);
+        int port = Integer.parseInt(arr[1]);
+        System.out.println("Client:-" + arr[0]);
+        System.out.println(port);
+        receive = new byte[65535];
 
-            // Step 2 : create a DatgramPacket to receive the data.
-            DpReceive = new DatagramPacket(receive, receive.length);
-
-            // Step 3 : revieve the data in byte buffer.
-            ds.receive(DpReceive);
-
-            System.out.println("Client:-" + data(receive));
-
-            // Exit the server if the client sends "bye"
-            if (data(receive).toString().equals("bye"))
-            {
-                System.out.println("Client sent bye.....EXITING");
-                break;
-            }
-
-            // Clear the buffer after every message.
-            receive = new byte[65535];
-        }
     }
 
-    // A utility method to convert the byte array
-    // data into a string representation.
-    public static StringBuilder data(byte[] a)
-    {
+    static StringBuilder data(byte[] a) {
         if (a == null)
             return null;
         StringBuilder ret = new StringBuilder();

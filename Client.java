@@ -4,14 +4,16 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
-class Client{
+public class Client{
     String name;
     DataInputStream dis;
     DataOutputStream dos;
     int port;
     ServerSocket ss;
     Socket s;
+    static ArrayList<Integer> av_port = new ArrayList<>();
 
     Client(String name, DataInputStream dis, DataOutputStream dos, int port, ServerSocket ss, Socket s){
         this.name = name;
