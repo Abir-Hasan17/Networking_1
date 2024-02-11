@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client_2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Clnt_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Clnt_essentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server_essentials.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
-  <component name="RunManager" selected="Application.Client_2">
+  <component name="RunManager" selected="Application.Client_1">
     <configuration name="Client_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client_1" />
       <module name="Networking_1" />
@@ -87,8 +86,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client_2" />
         <item itemvalue="Application.Client_1" />
+        <item itemvalue="Application.Client_2" />
         <item itemvalue="Application.Server_1" />
         <item itemvalue="Application.DSender" />
         <item itemvalue="Application.DReceiver" />

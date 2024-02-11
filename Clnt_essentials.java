@@ -26,8 +26,8 @@ class clnt_in implements Runnable{
                 if(msg.equals("//p")){
                     pg = !pg;
                 }
-            } catch (IOException e) {
-                System.out.println("error in clnt_in" +e.getMessage());
+            } catch (Exception e) {
+                System.out.println("error in clnt_in " +e.getMessage());
             }
         }
     }
@@ -48,8 +48,8 @@ class clnt_out implements Runnable{
                 String msg = inp.nextLine();
                 dos.writeUTF(msg);
                 if(msg.equals("exit")) System.exit(0);
-            } catch (IOException e) {
-                System.out.println("error in clnt_out");
+            } catch (Exception e) {
+                System.out.println("error in clnt_out " +e.getMessage());
             }
         }
     }
@@ -79,7 +79,7 @@ class clnt_ping implements Runnable{
             ds.close();
             Thread init = new Thread(new clnt_init(port,ip));
             init.start();
-        }catch(Exception e){System.out.println("error in clnt_ping "+e.getMessage());}
+        }catch(Exception e){System.out.println("error in clnt_ping ");}
     }
     static StringBuilder data(byte[] a) {
         if (a == null)
@@ -106,11 +106,11 @@ class clnt_init implements Runnable{
     public void run() {
         try{
             Scanner inp = new Scanner(System.in);
-            System.out.print("User_Name: ");
-            String clnt = inp.nextLine();
             Socket s = new Socket(ip,port);
             System.out.println("\nConnected to server!!!!\n");
 
+            System.out.print("User_Name: ");
+            String clnt = inp.nextLine();
             DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
             dos.writeUTF(clnt);
@@ -120,6 +120,6 @@ class clnt_init implements Runnable{
 
             out.start();
             in.start();
-        }catch(Exception e){System.out.println("error in clnt_init");}
+        }catch(Exception e){System.out.println("error in clnt_init "+e.getMessage());}
     }
 }
