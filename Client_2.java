@@ -6,9 +6,10 @@ import java.text.*;
 public class Client_2 {
     static int port;
     static String ip;
+    static ArrayList<Client> clients = new ArrayList<Client>();
     public static void main(String[] args) throws IOException {
 
-        Thread ping = new Thread(new clnt_ping(port,ip));
+        Thread ping = new Thread(new clnt_ping(port,ip,clients));
         ping.start();
 
     }

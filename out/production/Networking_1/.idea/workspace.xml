@@ -6,8 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client_2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Clnt_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Clnt_essentials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/DSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server_essentials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/Client_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/Client_2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/DSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/DSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_in.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_init.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_init.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_out.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_ping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_ping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_ping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_ping.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Client{
     String name;
+    String key;
     DataInputStream dis;
     DataOutputStream dos;
     int port;
@@ -22,9 +23,15 @@ public class Client{
         this.port = port;
         this.ss = ss;
         this.s = s;
+        this.key = "encription_is_key";
     }
 
-    void disconnect(){
+    Client(String name, String key){
+        this.name = name;
+        this.key = key;
+    }
+
+    public void disconnect(){
         try{
             dis.close();
             dos.close();
@@ -34,4 +41,5 @@ public class Client{
             System.out.println("error in disconnect method");
         }
     }
+
 }
