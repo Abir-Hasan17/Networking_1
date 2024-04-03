@@ -1,3 +1,4 @@
+import java.nio.file.Files;
 import java.util.*;
 import java.io.*;
 import java.net.*;
@@ -43,7 +44,6 @@ class serv_in implements Runnable{
     }
     @Override
     public void run() {
-        boolean pg = false;
         while(true){
             try {
                 String s = client.dis.readUTF();
@@ -56,9 +56,11 @@ class serv_in implements Runnable{
                     clients.remove(client);
                     break;
                 }
+                if(msg.equals("sending_file")){
+                    utility.receive_file(client.dis);
+                }
                 String[] arr = s.split(">> ",2);
-                if(pg) System.out.println(msg);
-                else if(!s.contains(">> ")) System.out.println("#"+client.name+": "+msg);
+                if(!s.contains(">> ")) System.out.println("#"+client.name+": "+msg);
                 else System.out.println("#"+client.name+": "+arr[0]+">> "+utility.decrypt(arr[1],key));
                 String clnt = arr[0];
                 if(s.contains(">> ")){
@@ -77,7 +79,6 @@ class serv_in implements Runnable{
                         }
                     }
                 }
-                if(msg.equals("//p")) pg = !pg;
             }
             catch (SocketException e) {break;}
             catch (IOException e) {
@@ -99,23 +100,38 @@ class serv_out implements Runnable{
         while(true){
             try {
                 String s = inp.nextLine();
-                String key = "encription_is_key";
+                String key = utility.default_key;
                 String msg = utility.encrypt(s, key);
                 if(s.contains(">> ")){
                     String[] arr = s.split(">> ",2);
                     String clnt = arr[0];
-                    msg = utility.encrypt(arr[1], key);
+                    msg = arr[1];
+                    String brr[] = msg.split(" ",0);
+                    msg = utility.encrypt(msg, key);
                     for(int i = 0; i<clients.size(); i++){
                         if(clnt.equals(clients.get(i).name)){
                             clients.get(i).dos.writeUTF("Server");
-                            clients.get(i).dos.writeUTF(msg);
-                            if(arr[1].equals("exit")){
-                                clients.get(i).disconnect();
-                                clients.remove(i);
-                                new Thread(new serv_conn(clients.get(i).port, clients)).start();
+                            if(brr[0].equals("cmd")){
+                                try{
+                                    if(brr[1].equals("send_file")){
+                                        brr[2] = brr[2];
+                                        clients.get(i).dos.writeUTF(utility.encrypt("sending_file",key));
+                                        utility.send_file(clients.get(i).dos,brr[2]);
+                                    }
+                                }catch (ArrayIndexOutOfBoundsException e){
+                                    System.out.println("Invalid Command :(");
+                                }
                             }
-                            if(arr[1].equals("block")){
-                                clients.remove(i);
+                            else{
+                                clients.get(i).dos.writeUTF(msg);
+                                if (arr[1].equals("exit")) {
+                                    clients.get(i).disconnect();
+                                    clients.remove(i);
+                                    new Thread(new serv_conn(clients.get(i).port, clients)).start();
+                                }
+                                if (arr[1].equals("block")) {
+                                    clients.remove(i);
+                                }
                             }
                         }
                     }
@@ -123,7 +139,21 @@ class serv_out implements Runnable{
                     //System.out.println(dos.size());
                     for(int i = 0; i<clients.size(); i++){
                         clients.get(i).dos.writeUTF("Server");
-                        clients.get(i).dos.writeUTF(utility.encrypt(s, key));
+                        String brr[] = s.split(" ", 0);
+                        if(brr[0].equals("cmd")){
+                            try{
+                                if(brr[1].equals("send_file")){
+                                    brr[2] = brr[2]; // catching error.
+                                    clients.get(i).dos.writeUTF(utility.encrypt("sending_file",key));
+                                    utility.send_file(clients.get(i).dos, brr[2]);
+                                }
+                            }catch (ArrayIndexOutOfBoundsException e){
+                                System.out.println("Invalid Command :(");
+                            }
+                        }
+                        else{
+                            clients.get(i).dos.writeUTF(utility.encrypt(s, key));
+                        }
                     }
                     if(s.equals("exit")) System.exit(0);
                 }
@@ -169,6 +199,51 @@ class serv_ping implements Runnable{
 }
 
 class utility{
+    public static void receive_file(DataInputStream dis) throws IOException {
+        String name = dis.readUTF();
+        String extension = dis.readUTF();
+        String f_name = name  + "." + extension;
+        String str = dis.readUTF();
+        File f;
+
+        char c = '1';
+        while(true){
+            if(new File(f_name).exists()){
+                f_name = name  + c + "." + extension;
+                c++;
+            }else{
+                f = new File(f_name);
+                break;
+            }
+        }
+        if (f.createNewFile()) {
+            System.out.println("New File created: " + f.getName());
+            Files.writeString(f.toPath(),str);
+            System.out.println("The file containes:: \n"+str);
+        }
+    }
+    public static void send_file(DataOutputStream dos, String f_name) throws IOException {
+        String arr[] = f_name.split("\\.",2);
+        String name = arr[0];
+        String extension = arr[1];
+
+        File f = new File(f_name);
+        if (f.createNewFile()) {
+            System.out.println("New File created: " + f.getName()+"\n an empty file will be sent!!!");
+        } else {
+            System.out.println("File sent: "+name+'.'+extension);
+        }
+        String str = "";
+        Scanner fsc = new Scanner(f);
+        while(fsc.hasNextLine()){
+            str = str+fsc.nextLine()+"\n";
+        }
+
+        dos.writeUTF(name);
+        dos.writeUTF(extension);
+        dos.writeUTF(str);
+
+    }
     public static void notify_other_clients(String clnt, ArrayList<Client> clients) throws IOException {
         for(int i = 0; i<clients.size(); i++){
             if(clients.get(i).name.equals(clnt)) continue;
@@ -182,17 +257,18 @@ class utility{
                 "1. All your messages will be sent to the server.\n" +
                 "2. To send massage to another client use following format:\n" +
                 "\t\t client_name>> massage\n" +
-                "3. To broadcast a massage to all the clients use the following format:\n" +
+                "3. You can encript your massages between you and and a client by providing them with a key. The server wont be able to read an encripted massage.\n" +
+                "The format is: \n" +
+                "\t\t cmd set_key client_name key\n" +
+                "NOTE: Both users have to set the encription keys and client_name is the name of the client you want to send or receive encrypted massage from.\n" +
+                "4. To broadcast a massage to all the clients use the following format:\n" +
                 "\t\t all>> massage\n" +
-                "4. To send massage as paragraph to the server use the following format:\n" +
-                "\t\t //p\n" +
-                "\t\t massage\n" +
-                "\t\t //p\n" +
+                "5. To send a file to the server use the following format:\n" +
+                "\t\t cmd send_file file_name.extension\n" +
                 "\n" +
-                "NOTE: It is recommended to write the paragraph according to the format elsewhere and then coppying and pasting in the console.\n" +
-                "NOTE: Do not forget to put a new line after the closing \"//p\".\n" +
-                "5. You can not send paragraphs to other clients\n" +
-                "6. To terminate your connection from server send \"exit\" to the server.\n" +
+                "NOTE: The file must be in the same folder as the programm.\n" +
+                "6. You can not send files to other clients (for now)\n" +
+                "7. To terminate your connection from server send \"exit\" to the server.\n" +
                 "\n\t\t\t ##ENJOY##";
         dos.writeUTF("Server");
         dos.writeUTF(utility.encrypt(Instructions, "encription_is_key"));
@@ -239,7 +315,8 @@ class utility{
                 return clients.get(i).key;
             }
         }
-        return "encription_is_key";
+        return default_key;
     }
+    public static String default_key = "encription_is_key";
 
 }

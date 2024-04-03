@@ -13,7 +13,6 @@ class clnt_in implements Runnable{
     }
     @Override
     public void run() {
-        boolean pg = false;
         while(true){
             try {
                 String sender = dis.readUTF();
@@ -21,14 +20,8 @@ class clnt_in implements Runnable{
                 String key = utility.find_key(sender,clients);
                 msg = utility.decrypt(msg, key);
                 if(msg.equals("exit")&&sender.equals("Server")) System.exit(0);
-                if(pg){
-                    System.out.println(msg);
-                }else{
-                    System.out.println("#"+sender+": "+msg);
-                }
-                if(msg.equals("//p")){
-                    pg = !pg;
-                }
+                System.out.println("#"+sender+": "+msg);
+                if(msg.equals("sending_file")) utility.receive_file(dis);
             } catch (Exception e) {
                 System.out.println("error in clnt_in " +e.getMessage());
             }
@@ -51,14 +44,24 @@ class clnt_out implements Runnable{
     public void run() {
         while(true){
             try {
+                String key = utility.default_key;
                 String s = inp.nextLine();
                 String arr[] = s.split(" ",0);
                 String msg;
                 if(arr[0].equals("cmd")){
-                    if(arr[1].equals("set_key")) utility.set_key(arr[2],arr[3],clients);
+                    try{
+                        if(arr[1].equals("set_key")) utility.set_key(arr[2],arr[3],clients);
+                        if(arr[1].equals("send_file")){
+                            arr[2] = arr[2];
+                            dos.writeUTF(utility.encrypt("sending_file",key));
+                            utility.send_file(dos,arr[2]);
+                        }
+                    }catch (ArrayIndexOutOfBoundsException e){
+                        System.out.println("Invalid Command :(");
+                    }
                 }else{
                     String brr[] = s.split(">> ", 2);
-                    String key = utility.find_key(brr[0],clients);
+                    key = utility.find_key(brr[0],clients);
                     if(s.contains(">> ")){
                         msg = utility.encrypt(brr[1],key);
                         dos.writeUTF(brr[0]+">> "+msg);
