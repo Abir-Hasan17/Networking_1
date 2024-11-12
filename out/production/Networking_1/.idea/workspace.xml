@@ -55,7 +55,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
-  <component name="RunManager" selected="Application.Server_1">
+  <component name="RunManager" selected="Application.Client_2">
     <configuration name="Client_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client_1" />
       <module name="Networking_1" />
@@ -100,8 +100,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server_1" />
         <item itemvalue="Application.Client_2" />
+        <item itemvalue="Application.Server_1" />
         <item itemvalue="Application.DReceiver" />
         <item itemvalue="Application.DSender" />
         <item itemvalue="Application.Client_1" />

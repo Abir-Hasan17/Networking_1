@@ -6,21 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f9c8a8d6-e2d0-44ca-b6de-2dfa9593996d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clnt_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Clnt_essentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/DReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/DSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server_essentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server_essentials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hello.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/DReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/DReceiver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/DSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/DSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_init.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_init.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_out.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/clnt_ping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/clnt_ping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_conn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_out.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/serv_ping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/serv_ping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/hello1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Networking_1/hello2.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Networking_1/utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Networking_1/utility.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +28,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2bVITvqSHvKLclI6FoqUqbyk1Jl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -46,16 +40,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
-  </component>
-  <component name="RunManager" selected="Application.Client_2">
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Client_1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Client_2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server_1.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;multiple__client&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Client_1">
     <configuration name="Client_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client_1" />
       <module name="Networking_1" />
@@ -92,19 +87,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Client_1" />
+      <item itemvalue="Application.Client_2" />
       <item itemvalue="Application.DReceiver" />
       <item itemvalue="Application.DSender" />
       <item itemvalue="Application.Server_1" />
-      <item itemvalue="Application.Client_1" />
-      <item itemvalue="Application.Client_2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client_2" />
+        <item itemvalue="Application.Client_1" />
         <item itemvalue="Application.Server_1" />
+        <item itemvalue="Application.Client_2" />
         <item itemvalue="Application.DReceiver" />
         <item itemvalue="Application.DSender" />
-        <item itemvalue="Application.Client_1" />
       </list>
     </recent_temporary>
   </component>
@@ -129,7 +124,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
