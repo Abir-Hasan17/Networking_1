@@ -8,7 +8,7 @@ public class Server_1 {
     public static void main(String[] args) throws IOException{
 
         System.out.println("\nWaiting for client....");
-        ServerSocket ss = new ServerSocket(777);
+        ServerSocket ss = new ServerSocket(8080);
         Socket s = ss.accept();
         System.out.println("Connected to client!!!!\n");
 

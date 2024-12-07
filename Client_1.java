@@ -17,7 +17,7 @@ public class Client_1 {
         //     }catch(Exception e){System.out.println("192.168.0."+i+" unsuccesful");}
         // }
 
-        Socket s = new Socket("localhost",777);
+        Socket s = new Socket("localhost",8080);
         System.out.println("\nConnected to server!!!!\n");
 
         DataInputStream dis = new DataInputStream(s.getInputStream());
